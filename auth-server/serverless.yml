@@ -36,6 +36,12 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
+getAcessToken:
+  handler: handler.getAccessToken
+  events: 
+    - http:
+        path: api/token/{code}
+        method: get
 
 # you can overwrite defaults here
 #  stage: dev
