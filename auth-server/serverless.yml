@@ -36,11 +36,17 @@ functions:
       - http:
           path: api/get-auth-url
           method: get
-getAcessToken:
-  handler: handler.getAccessToken
-  events: 
-    - http:
-        path: api/token/{code}
+  getAcessToken:
+    handler: handler.getAccessToken
+    events: 
+      - http:
+          path: api/token/{code}
+          method: get
+  getCalendarEvents:
+    handler: handler.getCalendarEvents
+    evnets:
+      - http:
+        path: api/get-events/{access_token}
         method: get
 
 # you can overwrite defaults here
