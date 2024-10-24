@@ -75,17 +75,11 @@ module.exports.getCalendarEvents = async (event) => {
   return new Promise((resolve, reject) => {
     calendar.events.list(
       {
-        calendarId: CALENDAR_ID,
+        calendarId: fullstackwebdev@careerfoundry.com,
         auth: oAuth2Client,
         timeMin: new Date().toISOString(),
         singleEvents: true,
         orderBy: "startTime",
-      },
-      (error, response) => {
-        if (error) {
-          return reject(error);
-        }
-        return resolve(response);
       }
     );
   })
