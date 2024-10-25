@@ -28,12 +28,14 @@ const CitySearch = ({ allLocations }) => {
                 className="city"
                 placeholder="Search for a city"
                 value={query}
-                onFocus={() => setShowSuggestions(true)} />
-            onChange={handleInputChanged}
+                onFocus={() => setShowSuggestions(true)}
+                onChange={handleInputChanged}
+            />
+
             {showSuggestions ?
                 <ul className="suggestions">
                     {suggestions.map((suggestions) => {
-                        return <li key={suggestions}>{suggestions}</li>
+                        return <li onClick={handleItemClicked} key={suggestions}>{suggestions}</li>
                     })}
                     <li key='See all cities' onClick={handleItemClicked}>
                         <b>See all cities</b>
