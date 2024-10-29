@@ -17,7 +17,7 @@ describe('<Event /> component', () => {
     });
 
     test('renders event start time', () => {
-        const eventTime = EventComponent.queryByText(event.created);
+        const eventTime = EventComponent.queryByText(new Date(event.created).toUTCString());
         expect(eventTime).toBeInTheDocument();
     });
 
