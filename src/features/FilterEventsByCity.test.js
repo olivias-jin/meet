@@ -41,7 +41,7 @@ defineFeature(feature, test => {
             const user = userEvent.setup();
             const AppDOM = AppComponent.container.firstChild;
             CitySearchDOM = AppDOM.querySelector('#city-search');
-            const CitySearchInput = within(CitySearchDOM).queryByRole('testbox');
+            const CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
             await user.type(CitySearchInput, "Berlin");
         });
 
@@ -53,6 +53,7 @@ defineFeature(feature, test => {
     });
 
     test('user can select a city from the suggested list', ({ given, and, when, then }) => {
+
         let AppComponent;
         let AppDOM;
         let CitySearchDOM;
@@ -81,11 +82,11 @@ defineFeature(feature, test => {
         });
 
         and('the user should receive a list of upcoming events in that city', async () => {
-            const EventListDOM = AppDOM.querySelector('#evnet-list');
+            const EventListDOM = AppDOM.querySelector('#event-list');
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
             const allEvents = await getEvents();
 
-            // filtering the list of all evnets down to events located in Germany
+            // filtering the list of all event down to events located in Germany
             // CitySearchInput.value should have the value "Berlin, Germany" at this point
 
             const berlinEvents = allEvents.filter(event => event.location === CitySearchInput.value)
