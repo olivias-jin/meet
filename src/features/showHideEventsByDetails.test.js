@@ -30,7 +30,7 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User able to show events by details', ({ given, when, then }) => {
+    test('User can expand an event to see its details', ({ given, when, then }) => {
         let AppComponent
         given('user opens the main page', () => {
 
@@ -48,7 +48,7 @@ defineFeature(feature, test => {
         });
     });
 
-    test('User able to hide events by details', ({ given, when, then }) => {
+    test('User can collapse an event to hide details', ({ given, when, then }) => {
         let EventComponent;
         given('User already open the main page', () => {
             EventComponent = render(<App />);
@@ -70,9 +70,5 @@ defineFeature(feature, test => {
             const eventDetails = AppDOM.querySelector('.details');
             expect(eventDetails).not.toBeInTheDocument;
         });
-    })
-
-
-
-
+    });
 });
