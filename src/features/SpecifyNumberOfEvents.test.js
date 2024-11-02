@@ -25,7 +25,7 @@ defineFeature(feature, test => {
             await user.click(suggestionsListItems[32]);
         });
 
-        then('the event listing page refresh and the user can see the specific number of events', () => {
+        then('the event listing page refresh and the user can see the specific number of events', async () => {
             await waitFor(() => {
                 expect(EventListItems.length).toBe(32);
 
@@ -46,12 +46,12 @@ defineFeature(feature, test => {
             const EventListDOM = AppDOM.querySelector('#event-list');
         });
 
-        and('inputs a 2 number to see the events displayed', () => {
+        and('inputs a 2 number to see the events displayed', async () => {
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
             await user.click(suggestionsListItems[2]);
         });
 
-        then('the event listing page refresh and the user can see the specific number of events', () => {
+        then('the event listing page refresh and the user can see the specific number of events', async () => {
             await waitFor(() => {
                 expect(EventListItems.length).toBe(2);
 
