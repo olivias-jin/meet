@@ -14,3 +14,4 @@ Feature: Show/Hide Events by Details
         Given User already open the main page
         When the user clicks on the `hide details` button
         Then it hides all the details about the events
+
