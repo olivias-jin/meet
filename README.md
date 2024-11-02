@@ -1,5 +1,7 @@
 # Meet App
 
+# Live Link
+[Meet App](https://olivias-jin.github.io/meet)
 
 
 # Feature 1: Filter Events By City
