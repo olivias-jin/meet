@@ -14,9 +14,10 @@ defineFeature(feature, test => {
             AppComponent = render(<App />);
         });
 
-        when('list of events are render', () => {
+        when('list of events are render', async () => {
             const AppDOM = AppComponent.container.firstChild;
             const EventListDOM = AppDOM.querySelector('#event-list');
+            expect(EventListDOM).toBeInTheDocument();
             await waitFor(() => {
                 const EventListItems = within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems.length).toBe(32);

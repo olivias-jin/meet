@@ -58,10 +58,11 @@ defineFeature(feature, test => {
         let AppDOM;
         let CitySearchDOM;
         let CitySearchInput;
-        given('user was typing “Berlin” in the city textbox', () => {
+        given('user was typing “Berlin” in the city textbox', async () => {
             AppComponent = render(<App />);
             const user = userEvent.setup();
             AppDOM = AppComponent.container.firstChild;
+            CitySearchDOM = within(AppDOM).queryByTestId('city-search');
             CitySearchInput = within(CitySearchDOM).queryByRole('textbox');
             await user.type(CitySearchInput, "Berlin");
         });
