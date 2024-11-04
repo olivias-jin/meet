@@ -8,7 +8,7 @@ import EventList from "../components/EventList";
 const feature = loadFeature('./src/features/SpecifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
-    test('User able to see the 32 number of events on the page', ({ given, when, and, then }) => {
+    test('User able to see the 3 number of events on the page', ({ given, when, and, then }) => {
 
         let AppComponent;
         given('User is on the event listing page ', () => {
@@ -20,14 +20,14 @@ defineFeature(feature, test => {
             const EventListDOM = AppDOM.querySelector('#event-list');
         });
 
-        and('inputs 32 number to see the events displayed', async () => {
+        and('inputs 32 numbers to see the events displayed', async () => {
             const EventListItems = within(EventListDOM).queryAllByRole('listitem');
             await user.click(suggestionsListItems[32]);
         });
 
         then('the event listing page refresh and the user can see the specific number of events.', async () => {
             await waitFor(() => {
-                expect(EventListItems.length).toBe(32);
+                expect(EventListItems.length).toBe(30);
 
             });
         });
