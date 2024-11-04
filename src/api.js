@@ -35,7 +35,7 @@ const removeQuery = () => {
 // This function takes the accessToken found and check whehter it's a valid or not
 const checkToken = async (acessToken) => {
     const response = await fetch(
-        'https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}'
+        `https://www.googleapis.com/oauth2/v1/tokeninfo?access_token=${accessToken}`
     );
     const result = await response.json();
     return result;
@@ -57,7 +57,7 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = "https://n9spotvld6.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url" + "/" + token;
+        const url = "https://n9spotvld6.execute-api.eu-central-1.amazonaws.com/dev/api/get-events" + "/" + token;
         const response = await fetch(url);
         const result = await response.json();
         if (result) {
@@ -70,7 +70,7 @@ export const getEvents = async () => {
 const getToken = async (code) => {
     const encodeCode = encodeURIComponent(code);
     const response = await fetch(
-        'https://n9spotvld6.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url' + '/' + encodeCode
+        'https://n9spotvld6.execute-api.eu-central-1.amazonaws.com/dev/api/token' + '/' + encodeCode;
     );
     const { access_token } = await response.json();
     access_token && localStorage.setItem("access_token", access_token);
