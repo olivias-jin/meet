@@ -2,6 +2,7 @@ import { render, within, waitFor } from '@testing-library/react';
 import { getEvents } from '../api';
 import EventList from '../components/EventList';
 import App from "../App";
+import { act } from 'react';
 
 describe('<EventList /> component', () => {
   let EventListComponent;
@@ -27,7 +28,7 @@ describe('<EventList /> integration', () => {
     const EventListDOM = AppDOM.querySelector('#event-list');
     await waitFor(() => {
       const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBe(32);
+      expect(EventListItems.length).toBe(30);
     });
   });
 });

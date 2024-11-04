@@ -1,6 +1,6 @@
 import { loadFeature, defineFeature } from "jest-cucumber";
 import { render, within, waitFor } from "@testing-library/react";
-import App from '../App';
+import App from '../path/to/App';
 import { getEvents } from "../mock-data";
 import userEvent from "@testing-library/user-event";
 import EventList from "../components/EventList";
@@ -8,8 +8,11 @@ import EventList from "../components/EventList";
 const feature = loadFeature('./src/features/ShowHideEventsByDetails.feature');
 
 defineFeature(feature, test => {
+    let AppComponent;
+
+    
     test('An event element is collapsed by default', ({ given, when, then }) => {
-        let AppComponent
+        
         given('user opens the app', () => {
             AppComponent = render(<App />);
         });

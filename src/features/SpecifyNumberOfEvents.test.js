@@ -8,53 +8,57 @@ import EventList from "../components/EventList";
 const feature = loadFeature('./src/features/SpecifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
-    test('User able to see the 3 number of events on the page', ({ given, when, and, then }) => {
+    let AppComponent;
+    let EventListDOM;
 
-        let AppComponent;
+    test('User able to see the 30 numbers of events on the page', ({ given, when, and, then }) => {
         given('User is on the event listing page ', () => {
             AppComponent = render(<App />);
-        });
-
-        when('the user clicks the `filter` button', () => {
             const AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
+            EventListDOM = AppDOM.querySelector('#event-list');
         });
 
-        and('inputs 32 numbers to see the events displayed', async () => {
-            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-            await user.click(suggestionsListItems[32]);
+        when('the user clicks the `filter` button', async () => {
+            const user = userEvent.setup();
+            const filterButton = within(EventListDOM).getByRole('button', { name: /filter/i });
+            await user.click(filterButton); // Assuming you have a filter button to trigger the event display
+        });
+
+        and('inputs 30 numbers to see the events displayed', async () => {
+            const input = within(EventListDOM).getByRole('textbox'); // Get the input field for the number
+            await userEvent.type(input, '30'); // Type '30' into the input field
         });
 
         then('the event listing page refresh and the user can see the specific number of events.', async () => {
             await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems.length).toBe(30);
-
             });
         });
     });
 
-
-    test('User able to see the specify number of events on the page', ({ given, when, and, then }) => {
-
-        let AppComponent;
-        given('User is on the event listing page ', () => {
+    test('User able to see the specific number of events on the page', ({ given, when, and, then }) => {
+        given('User is on the event listing page', () => {
             AppComponent = render(<App />);
+            const AppDOM = AppComponent.container.firstChild;
+            EventListDOM = AppDOM.querySelector('#event-list');
         });
 
-        when('the user clicks the `filter` button', () => {
-            const AppDOM = AppComponent.container.firstChild;
-            const EventListDOM = AppDOM.querySelector('#event-list');
+        when('the user clicks the `filter` button', async () => {
+            const user = userEvent.setup();
+            const filterButton = within(EventListDOM).getByRole('button', { name: /filter/i });
+            await user.click(filterButton); // Trigger the filter action
         });
 
         and('inputs a specific number to see the events displayed', async () => {
-            const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-            await user.click(suggestionsListItems[2]);
+            const input = within(EventListDOM).getByRole('textbox'); // Get the input field for the number
+            await userEvent.type(input, '2'); // Type '2' into the input field
         });
 
         then('the event listing page refresh and the user can see the specific number of events', async () => {
             await waitFor(() => {
+                const EventListItems = within(EventListDOM).queryAllByRole('listitem');
                 expect(EventListItems.length).toBe(2);
-
             });
         });
     });
