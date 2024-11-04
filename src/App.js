@@ -7,7 +7,7 @@ import { getEvents , extractLocations } from './api';
 import './App.css';
 
 import atatus from 'atatus-spa';
-atatus.config('YOUR_API_KEY').install();
+atatus.config('9f642ff44163421792a4d7bf9456811a').install();
 
 const App = () => {
 

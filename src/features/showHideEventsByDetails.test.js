@@ -24,7 +24,7 @@ defineFeature(feature, test => {
             });
         });
 
-        then('it doens`t show details of event', () => {
+        then("it doens't show details of event.", () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
             expect(eventDetails).toBeInTheDocument;
@@ -42,7 +42,7 @@ defineFeature(feature, test => {
             EventComponent = render(<App />);
         });
 
-        then('it shows all the details about the events', () => {
+        then('it shows all the details about the events.', () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
             expect(eventDetails).toBeInTheDocument;
