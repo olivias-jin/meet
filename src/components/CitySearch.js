@@ -27,7 +27,7 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
     };
 
     return (
-        <div id="city-search">
+        <div id="city-search" data-testid="city-serarch">
             <input
                 type="text"
                 className="city"
@@ -51,5 +51,4 @@ const CitySearch = ({ allLocations, setCurrentCity }) => {
         </div>
     )
 }
-
 export default CitySearch;

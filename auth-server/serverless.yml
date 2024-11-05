@@ -29,6 +29,25 @@ provider:
     CLIENT_ID: ${file(config.json):CLIENT_ID}
     CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
     CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "lambda:GetFunction"
+            - "lambda:CreateFunction"
+            - "lambda:UpdateFunctionConfiguration"
+            - "lambda:UpdateFunctionCode"
+            - "lambda:InvokeFunction"
+          Resource: "*"
+        - Effect: "Allow"
+          Action:
+            - "apigateway:POST"
+            - "apigateway:PUT"
+            - "apigateway:DELETE"
+            - "apigateway:PATCH"
+            - "apigateway:GET"
+          Resource: "*"    
 functions:
   getAuthURL:
     handler: handler.getAuthURL
