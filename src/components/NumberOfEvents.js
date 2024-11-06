@@ -1,31 +1,29 @@
-import { useState } from "react";
+import PropTypes from 'prop-types';
+import React, { useState, useEffect } from "react";
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
-
   const [number, setNumber] = useState(30);
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
     setNumber(value);
 
+    // alert
     let errorText;
-    const parsedValue = Number(value);
-    
-    // check for valid postivie number
-    if (isNaN(parsedValue) || parsedValue <= 0) {
-      errorText = "Only positive numbers are allowed"
+    if (isNaN(value) || value.length <= 0) {
+      errorText = 'Please enter a valid number';
     } else {
-      errorText = ""
+      errorText = '';
     }
+    setCurrentNOE(value);
     setErrorAlert(errorText);
-    setCurrentNOE(parsedValue);
   };
 
   return (
     <div id="number-of-events">
       <label htmlFor="number-of-events-input">Number of Events: </label>
       <input
-        data-testId="numberOfEventsInput"
+        data-testid="numberOfEventsInput"
         type="text"
         id="number-of-events-input"
         className="number-of-events-input"
@@ -35,5 +33,10 @@ const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
     </div>
   );
 }
+
+NumberOfEvents.propTypes  ={
+  setCurrentNOE: PropTypes.func.isRequired,
+  setErrorAlert: PropTypes.func.isRequired
+};
 
 export default NumberOfEvents;

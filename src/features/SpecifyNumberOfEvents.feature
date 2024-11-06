@@ -6,8 +6,3 @@ Feature: Filter events by number of events shown
     And inputs 30 numbers to see the events displayed
     Then the event listing page refreshes and the user can see the specific number of events.
     
-  # Scenario: User is able to see the specific number of events on the page
-  #   Given User is on the event listing page
-  #   When the user clicks the filter button
-  #   And inputs a specific number to see the events displayed
-  #   Then the event listing page refreshes and the user can see the specific number of events.

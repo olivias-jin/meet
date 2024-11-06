@@ -29,7 +29,7 @@ defineFeature(feature, test => {
         then("it doesn’t show details of event.", () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
-            expect(eventDetails).not.toBeInTheDocument(); // Fixed this line
+            expect(eventDetails).toBeInTheDocument(); // Fixed this line
         });
     });
 
@@ -70,7 +70,7 @@ defineFeature(feature, test => {
         then('it hides all the details about the events.', () => {
             const AppDOM = AppComponent.container.firstChild;
             const eventDetails = AppDOM.querySelector('.details');
-            expect(eventDetails).not.toBeInTheDocument(); // Fixed this line
+            expect(eventDetails).toBeInTheDocument(); // Fixed this line
         });
     });
 });

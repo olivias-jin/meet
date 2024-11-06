@@ -4,7 +4,7 @@ import { render, screen } from '@testing-library/react';
 import mockData from "../mock-data";
 import { act } from 'react'; 
 
-const event = mockData[0];
+const event = mockData[30];
 
 describe('<Event /> component', () => {
     beforeEach(() => {

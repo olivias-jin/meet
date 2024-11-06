@@ -25,8 +25,8 @@ describe('<CitySearch /> component', () => {
   beforeEach(() => {
     CitySearchComponent = render(<CitySearch
       allLocations={[]}
-      setCurrentCity={() => {}}
-      setInfoAlert={jest.fn()} // Mock function for setInfoAlert
+      setCurrentCity={() => { }}
+      setInfoAlert={() => { }}
     />);
   });
 
@@ -78,7 +78,7 @@ describe('<CitySearch /> component', () => {
     CitySearchComponent.rerender(<CitySearch
       allLocations={allLocations}
       setCurrentCity={() => { }}
-      setInfoAlert={jest.fn()} // Mock function for setInfoAlert
+      setInfoAlert={() => { }}
     />);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
