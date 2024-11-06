@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
@@ -7,7 +7,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
     useEffect(() => {
         setSuggestions(allLocations);
-    }, [`${allLocations}`]);
+    }, [allLocations]);
 
     const handleInputChanged = (event) => {
         const value = event.target.value;
@@ -34,11 +34,11 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         setShowSuggestions(false);
         setCurrentCity(value);
         // if there's also one more scenario and clicks the "See all cities"
-        setInfoAlert("")
+        setInfoAlert("");
     };
 
     return (
-        <div id="city-search" data-testid="city-serarch">
+        <div id="city-search" data-testid="city-search">
             <input
                 type="text"
                 className="city"

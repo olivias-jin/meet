@@ -3,14 +3,30 @@ import userEvent from '@testing-library/user-event';
 import CitySearch from '../components/CitySearch';
 import App from '../App';
 import { extractLocations, getEvents } from '../api';
+import { act } from 'react';
+
+// Mocking API functions
+jest.mock('../api', () => ({
+  getEvents: jest.fn(),
+  extractLocations: jest.fn(),
+}));
+
+// Mock data for events and locations
+const mockEvents = [{ location: "Berlin, Germany" }, { location: "Munich, Germany" }];
+const mockLocations = ["Berlin, Germany", "Munich, Germany"];
+
+beforeEach(() => {
+  getEvents.mockResolvedValue(mockEvents);
+  extractLocations.mockReturnValue(mockLocations);
+});
 
 describe('<CitySearch /> component', () => {
   let CitySearchComponent;
   beforeEach(() => {
     CitySearchComponent = render(<CitySearch
       allLocations={[]}
-      setCurrentCity={[]}
-      setInfoAlert={[]}
+      setCurrentCity={() => {}}
+      setInfoAlert={jest.fn()} // Mock function for setInfoAlert
     />);
   });
 
@@ -39,18 +55,15 @@ describe('<CitySearch /> component', () => {
     const user = userEvent.setup();
     const allEvents = await getEvents();
     const allLocations = extractLocations(allEvents);
-    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} />);
+    CitySearchComponent.rerender(<CitySearch allLocations={allLocations} setInfoAlert={jest.fn()} />);
 
-    // user types "Berlin" in city textbox
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, "Berlin");
 
-    // filter allLocations to locations matching "Berlin"
     const suggestions = allLocations ? allLocations.filter((location) => {
       return location.toUpperCase().indexOf(cityTextBox.value.toUpperCase()) > -1;
     }) : [];
 
-    // get all <li> elements inside the suggestion list
     const suggestionListItems = CitySearchComponent.queryAllByRole('listitem');
     expect(suggestionListItems).toHaveLength(suggestions.length + 1);
     for (let i = 0; i < suggestions.length; i += 1) {
@@ -65,14 +78,13 @@ describe('<CitySearch /> component', () => {
     CitySearchComponent.rerender(<CitySearch
       allLocations={allLocations}
       setCurrentCity={() => { }}
+      setInfoAlert={jest.fn()} // Mock function for setInfoAlert
     />);
 
     const cityTextBox = CitySearchComponent.queryByRole('textbox');
     await user.type(cityTextBox, "Berlin");
 
-    // the suggestion's textContent look like this: "Berlin, Germany"
     const BerlinGermanySuggestion = CitySearchComponent.queryAllByRole('listitem')[0];
-
     await user.click(BerlinGermanySuggestion);
 
     expect(cityTextBox).toHaveValue(BerlinGermanySuggestion.textContent);
@@ -95,6 +107,6 @@ describe('<CitySearch /> integration', () => {
     await waitFor(() => {
       const suggestionListItems = within(CitySearchDOM).queryAllByRole('listitem');
       expect(suggestionListItems.length).toBe(allLocations.length + 1);
-    })
+    });
   });
 });

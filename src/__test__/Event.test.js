@@ -2,6 +2,7 @@ import Event from "../components/Event";
 import userEvent from "@testing-library/user-event";
 import { render, screen } from '@testing-library/react';
 import mockData from "../mock-data";
+import { act } from 'react'; 
 
 const event = mockData[0];
 
@@ -33,7 +34,7 @@ describe('<Event /> component', () => {
     
     // Scenario 1 
     test("event's details are hidden by default", () => {
-        const eventDetails = screen.queryByText(/details/i);
+        const eventDetails = screen.queryByText(/javascript is doing these/i);
         expect(eventDetails).not.toBeInTheDocument(); // Assuming details are not present initially
     });
 
@@ -44,7 +45,7 @@ describe('<Event /> component', () => {
         await user.click(showDetailButton);
 
         // Check if the details paragraph is displayed
-        const eventDetails = screen.getByText(/details/i); // Match the actual details text
+        const eventDetails = screen.getByText(/javascript is doing these/i); // Match the actual details text
         expect(eventDetails).toBeInTheDocument();
     });
 
@@ -57,7 +58,7 @@ describe('<Event /> component', () => {
         const hideDetailButton = screen.getByText('Hide details'); // Now this should be present
         await user.click(hideDetailButton);
 
-        const eventDetails = screen.queryByText(/details/i); // Match actual content of the details
+        const eventDetails = screen.queryByText(/javascript is doing these/i); // Match actual content of the details
         expect(eventDetails).not.toBeInTheDocument(); // Verify details are hidden
     });
 });

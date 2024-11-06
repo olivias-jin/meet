@@ -9,11 +9,11 @@ import './App.css';
 
 const App = () => {
   const [allLocations, setAllLocations] = useState([]);
-  const [currentNOE, setCurrentNOE] = useState(32);
+  const [currentNOE, setCurrentNOE] = useState(30);
   const [events, setEvents] = useState([]);
   const [currentCity, setCurrentCity] = useState("See all cities");
-  const [InfoAlert, setInfoAlert] = useState("");
-  const [ErrorAlert, setErrorAlert] = useState("");
+  const [infoAlertMessage, setInfoAlert] = useState("");
+  const [errorAlertMessage, setErrorAlert] = useState("");
 
   useEffect(() => {
     fetchData();
@@ -35,12 +35,12 @@ const App = () => {
 
       {/* Info Alert */}
       <div className='alerts-container'>
-        {InfoAlert.length ? <InfoAlert text={InfoAlert} /> : null}
+        {infoAlertMessage.length ? <InfoAlert text={infoAlertMessage} /> : null}
       </div>
 
       {/* ErrorAlert */}
       <div className='alerts-container'>
-        {ErrorAlert.length ? <ErrorAlert text={ErrorAlert} /> : null}
+        {errorAlertMessage.length ? <ErrorAlert text={errorAlertMessage} /> : null}
       </div>
 
       <CitySearch

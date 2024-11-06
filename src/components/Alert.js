@@ -1,5 +1,7 @@
 import { Component } from 'react';
 
+
+
 class Alert extends Component {
     constructor(props) {
         super(props);
@@ -47,3 +49,5 @@ class ErrorAlert extends Alert {
         this.bgColor = 'rgb(225,202,202)'; //pink
     }
 }
+
+export {InfoAlert, ErrorAlert};
