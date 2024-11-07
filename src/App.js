@@ -18,7 +18,7 @@ const App = () => {
 
   useEffect(() => {
     fetchData();
-  }, [currentCity]);
+  }, [currentCity, currentNOE]);
 
   const fetchData = async () => {
     try {
