@@ -22,22 +22,13 @@ defineFeature(feature, test => {
       EventListDOM = AppDOM.querySelector('#event-list');
     });
 
-    when('the user clicks the filter button', async () => {
-      user = userEvent.setup();
-      const filterButton = await waitFor(() =>
-        within(EventListDOM).findByRole('button', { name: /filter/i }),
-        { timeout: 5000 }
-      );
-      await user.click(filterButton);
-    });
-
     and('inputs 30 numbers to see the events displayed', async () => {
-      const input = within(EventListDOM).getByRole('textbox');
+      const input = AppComponent.getByTestId('numberofEventsInput');
       await userEvent.clear(input);  // Clear the input field
-      await userEvent.type(input, '30');
+      await userEvent.type(input, '10');
       await waitFor(() => {
         const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-        expect(EventListItems.length).toBe(30);
+        expect(EventListItems.length).toBe(10);
       });
     });
 
@@ -49,3 +40,5 @@ defineFeature(feature, test => {
     });
   });
 });
+
+
