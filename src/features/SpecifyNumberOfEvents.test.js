@@ -8,7 +8,7 @@ const feature = loadFeature('./src/features/SpecifyNumberOfEvents.feature');
 
 defineFeature(feature, test => {
   
-  test('User is able to see the 30 numbers of events on the page', ({ given, when, and, then }) => {
+  test('User is able to see the 32 numbers of events on the page', ({ given, when, and, then }) => {
     jest.setTimeout(10000);
     let AppComponent;
     let EventListDOM;
@@ -22,7 +22,7 @@ defineFeature(feature, test => {
       EventListDOM = AppDOM.querySelector('#event-list');
     });
 
-    and('inputs 30 numbers to see the events displayed', async () => {
+    and('inputs 32 numbers to see the events displayed', async () => {
       const input = AppComponent.getByTestId('numberofEventsInput');
       await userEvent.clear(input);  // Clear the input field
       await userEvent.type(input, '10');
@@ -36,7 +36,7 @@ defineFeature(feature, test => {
       const AppDOM = AppComponent.container.firstChild;
       EventListDOM = AppDOM.querySelector('#event-list');
       const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-      expect(EventListItems.length).toBe(30);  // Ensure correct number of events are displayed
+      expect(EventListItems.length).toBe(32);  // Ensure correct number of events are displayed
     });
   });
 });
