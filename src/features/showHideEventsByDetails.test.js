@@ -22,7 +22,7 @@ defineFeature(feature, test => {
             expect(EventListDOM).toBeInTheDocument();
             await waitFor(() => {
                 const EventListItems = within(EventListDOM).queryAllByRole('listitem');
-                expect(EventListItems.length).toBe(30);
+                expect(EventListItems.length).toBe(32);
             });
         });
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { useState, useEffect } from "react";
 
 const NumberOfEvents = ({ setCurrentNOE, setErrorAlert }) => {
-  const [number, setNumber] = useState(30);
+  const [number, setNumber] = useState(32);
 
   const handleInputChanged = (event) => {
     const value = event.target.value;
