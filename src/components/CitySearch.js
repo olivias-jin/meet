@@ -39,6 +39,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
 
     return (
         <div id="city-search" data-testid="city-search">
+            <label htmlFor="location-input">Choose a location:</label>
             <input
                 type="text"
                 className="city"
