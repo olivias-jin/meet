@@ -24,7 +24,7 @@ const App = () => {
     if (navigator.onLine){
       setWarningAlert("");
     }else {
-      setWarningAlert("You are currently offline; data may be outdated.";)
+      setWarningAlert("You are currently offline; data may be outdated.");
     }
     fetchData();
   }, [currentCity, currentNOE]);
