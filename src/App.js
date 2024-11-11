@@ -21,6 +21,11 @@ const App = () => {
   const [warningAlertMessage, setWarningAlert] = useState("");
 
   useEffect(() => {
+    if (navigator.onLine){
+      setWarningAlert("");
+    }else {
+      setWarningAlert("You are currently offline; data may be outdated.";)
+    }
     fetchData();
   }, [currentCity, currentNOE]);
 
