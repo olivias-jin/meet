@@ -19,7 +19,7 @@ const removeQuery = () => {
     let newurl;
     if (window.history.pushState && window.location.pathname) {
         newurl =
-            window.location.protocal +
+            window.location.protocol +
             "//" +
             window.location.host +
             window.location.pathname;

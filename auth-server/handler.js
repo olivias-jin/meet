@@ -80,25 +80,24 @@ module.exports.getCalendarEvents = async (event) => {
         timeMin: new Date().toISOString(),
         singleEvents: true,
         orderBy: "startTime",
+      },
+      (error, results) => {
+        if (error) {
+          reject({
+            statusCode: 500,
+            body: JSON.stringify(error),
+          });
+        } else {
+          resolve({
+            statusCode: 200,
+            headers: {
+              'Access-Control-Allow-Origin': '*',
+              'Access-Control-Allow-Credential': true,
+            },
+            body: JSON.stringify({ events: results.data.items }),
+          });
+        }
       }
     );
-  })
-    .then((results) => {
-      // Respond with OAuth token
-      return {
-        statusCode: 200,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Credentials': true,
-        },
-        body: JSON.stringify({ events: results.data.items }),
-      };
-    })
-    .catch((error) => {
-      // Handle error
-      return {
-        statusCode: 500,
-        body: JSON.stringify(error),
-      };
-    });
+  });
 };
