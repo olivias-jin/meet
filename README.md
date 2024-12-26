@@ -6,13 +6,13 @@
 
 # Table of Contents
 
-1. Project Feature [Link Text] (#Project-Feature)
+1. Project Feature [Link Text] (#project-feature)
 2.
 3.
 4.
 5.
 
-## Project Feature
+# Project Feature
 # Feature 1: Filter Events By City
 As a user,
 I should be able to filter events by city
