@@ -6,8 +6,8 @@
 
 # Table of Contents
 
-1. Project Feature [Link Text](#project-feature)
-2. Technologies Used [Link Text](#technologies-used)
+1. [Project Feature](#project-feature)
+2. [Technologies Used](#technologies-used)
 
 # Project Feature
 ## Feature 1: Filter Events By City
