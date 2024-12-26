@@ -4,6 +4,15 @@
 [Meet App](https://olivias-jin.github.io/meet)
 
 
+# Table of Contents
+
+1. Project Feature [Link Text] (#Project-Feature)
+2.
+3.
+4.
+5.
+
+## Project Feature
 # Feature 1: Filter Events By City
 As a user,
 I should be able to filter events by city
@@ -57,3 +66,12 @@ So that I can easily understand data related to events, such as attendee statist
 Given: the user is viewing a chart for an event<br />
 When: the user hovers over or clicks on specific parts of the chart (e.g., a bar or point on a graph)<br />
 Then: additional detailed data related to that part of the chart should be shown (e.g., exact numbers, dates)
+
+# Technologies Used
+- React - Component-based front-end framework.
+- Google Calendar API - Integration for event data.
+- Serverless Functions - Backend functionality using AWS Lambda.
+- Jest & Cucumber - For testing components and features.
+- Enzyme - Testing utilities for React.
+- CSS - Styling the user interface.
+- Service Workers - Enabling offline functionality.
