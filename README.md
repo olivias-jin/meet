@@ -8,6 +8,7 @@
 
 1. [Project Feature](#project-feature)
 2. [Technologies Used](#technologies-used)
+3. [Setup and Installation](#setup-and-installation)
 
 # Project Feature
 ## Feature 1: Filter Events By City
@@ -72,3 +73,25 @@ Then: additional detailed data related to that part of the chart should be shown
 - Enzyme - Testing utilities for React.
 - CSS - Styling the user interface.
 - Service Workers - Enabling offline functionality.
+
+# Setup and Installation
+To run the Meet App locally, follow these steps:\
+1. Clone the repository:
+
+git clone https://olivias-jin.github.io/meet.git
+cd meet
+
+2. Install dependencies:
+
+npm install
+
+3. Set up Google Calendar API:
+Follow Google Calendar API documentation to obtain API credentials.
+Add the credentials to your environment configuration.
+
+4. Start the development server:
+npm start
+The app will run at http://localhost.
+
+5. Build for production:
+npm run build
