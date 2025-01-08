@@ -83,15 +83,21 @@ cd meet
 
 2. Install dependencies:
 
+```bash
 npm install
+```
 
 3. Set up Google Calendar API:
 Follow Google Calendar API documentation to obtain API credentials.
 Add the credentials to your environment configuration.
 
 4. Start the development server:
+
 npm start
 The app will run at http://localhost.
 
 5. Build for production:
+
+```bash
 npm run build
+```
