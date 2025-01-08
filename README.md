@@ -92,8 +92,9 @@ Follow Google Calendar API documentation to obtain API credentials.
 Add the credentials to your environment configuration.
 
 4. Start the development server:
-
+```bash
 npm start
+```
 The app will run at http://localhost.
 
 5. Build for production:

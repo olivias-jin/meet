@@ -1,12 +1,50 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+/* General Styles */
+
+body {
+  background-color: #f0f4f8;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Subtle shadow */
 }
 
 .App * {
   box-sizing: border-box;
 }
+
+
+/* Header */
+h1 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* Alerts */
+.alerts-container {
+  margin-bottom: 10px;
+}
+
+.alert-container,
+.alerts-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.alert-container {
+  font-size: 1.2rem;
+}
+
 
 ul {
   padding: 0;
@@ -19,7 +57,7 @@ p {
 
 input[type="text"],
 input[type="number"] {
- 
+
   padding: 8px 6px 8px 10px;
   border-radius: 4px;
   outline: none;
@@ -31,7 +69,11 @@ input[type="number"] {
   margin-bottom: 20px;
 }
 
-.city {
+
+
+/* CitySearch Component */
+
+.CitySearch {
   width: 250px;
 }
 
@@ -41,6 +83,79 @@ input[type="number"] {
   margin: auto;
   position: relative;
 }
+
+input[type="text"] {
+  padding: 10px;
+  width: 250px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+
+/* NumberOfEvents Component */
+.NumberOfEvents {
+  margin: 20px 0;
+}
+
+input[type="number"] {
+  padding: 10px;
+  width: 60px;
+  font-size: 1rem;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+
+/* Charts Section */
+.charts-container {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 0;
+}
+
+.CityEventsChart,
+.EventGenresChart {
+  width: 48%;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  padding: 20px;
+}
+
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .charts-container {
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+
+
+  .charts-container>* {
+    width: 48%;
+    /* Each chart takes up half the container */
+    height: 300px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    /* Light background for the chart container */
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+
+
+  .CityEventsChart,
+  .EventGenresChart {
+    width: 90%;
+    margin-bottom: 20px;
+  }
+}
+
 
 .suggestions {
   width: 250px;
@@ -53,22 +168,24 @@ input[type="number"] {
   box-shadow: 10px 10px 16px -12px rgba(0, 0, 0, 0.75);
 }
 
-.suggestions > li {
+.suggestions>li {
   text-align: left;
   padding: 8px 6px 8px 10px;
   background-color: #eee;
   cursor: default;
 }
 
-.suggestions > li:last-child {
+.suggestions>li:last-child {
   border-bottom-left-radius: 4px;
   border-bottom-right-radius: 4px;
 }
 
-.suggestions > li:hover {
+.suggestions>li:hover {
   background-color: #bcdcdb;
 }
 
+
+/* Event Components */
 .event {
   padding: 10px 10px 35px;
   margin-bottom: 10px;
@@ -76,7 +193,46 @@ input[type="number"] {
   border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
+
+  margin-top: 30px;
 }
+
+.details-btn {
+  background-color: #007bff;
+  /* Primary blue color */
+  color: white;
+  border: none;
+  font-size: 16px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  right: 5px;
+  bottom: 5px;
+  padding: 5px 8px;
+  border-radius: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+.details-btn:hover {
+  background-color: #0056b3;
+  /* Darker blue when hovered */
+  transform: scale(1.05);
+  /* Slightly enlarge the button on hover */
+}
+
+.details-btn:focus {
+  outline: none;
+  /* Remove outline when focused */
+}
+
+.details-btn:active {
+  background-color: #004085;
+  /* Darkest blue when clicked */
+  transform: scale(0.98);
+  /* Slightly shrink the button on click */
+}
+
+
 
 .details-btn {
   position: absolute;
@@ -90,8 +246,10 @@ input[type="number"] {
 
 .container {
   display: flex;
-  justify-content: center; /* Centers horizontally */ 
-  text-align: center;      /* Ensures text is centered */
+  justify-content: center;
+  /* Centers horizontally */
+  text-align: center;
+  /* Ensures text is centered */
 }
 
 header {
@@ -105,3 +263,4 @@ header {
   color: #ffffff;
   margin-top: 10px;
 }
+
