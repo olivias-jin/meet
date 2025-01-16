@@ -58,4 +58,11 @@ class ErrorAlert extends Alert {
     }
 }
 
-export {InfoAlert,WarningAlert, ErrorAlert};
+class WaitAlert extends Alert {
+    constructor(props) {
+        super(props);
+        this.color = 'rgb(225,0,0)'; //red
+        this.bgColor = 'rgb(225,202,202)'; //pink
+    }
+}
+export {InfoAlert,WarningAlert, ErrorAlert, WaitAlert};

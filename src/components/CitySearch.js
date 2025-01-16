@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 
-const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
+const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert,  }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
+   
 
     useEffect(() => {
         setSuggestions(allLocations);
@@ -13,6 +14,7 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         const value = event.target.value;
         const filteredLocations = allLocations ? allLocations.filter((location) => {
             return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
+
         }) : [];
 
         setQuery(value);
@@ -26,6 +28,8 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
             infoText = ""
         }
         setInfoAlert(infoText);
+
+     
     };
 
     const handleItemClicked = (event) => {
@@ -33,13 +37,15 @@ const CitySearch = ({ allLocations, setCurrentCity, setInfoAlert }) => {
         setQuery(value);
         setShowSuggestions(false);
         setCurrentCity(value);
+
         // if there's also one more scenario and clicks the "See all cities"
         setInfoAlert("");
+        
     };
 
     return (
         <div id="city-search" data-testid="city-search">
-            <label htmlFor="location-input">Choose a location:</label>
+            <label htmlFor="location-input">Choose a City:</label>
             <input
                 type="text"
                 className="city"
